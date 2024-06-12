@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "./style.css">
+    <title>Лабораторна 12</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <img class="images" src="./img/me.jpg" alt = "myPhoto">
+            <div class="middle">
+                    <p>
+                    Тернопільський національний технічний університет ім. Івана Пулюя<br>
+                    Факультет ФІС<br>
+                    Кафедра комп’ютерних наук
+                    </p>
+                    <p>
+                        Лабораторна робота №12<br>
+                        Богач Максим Михайлович<br>
+                        група СП-31
+                    </p>
+                
+            </div>
+            <div class="log">
+                <img class="logos" src="./img/tntu-logo.png" alt = "tntuLogo">
+                <img class="logos" src="./img/FIS_logo.png" alt = "FIS">
+                <img class="logos" src="./img/KN_logo.png" alt = "KN">
+            </div>
+        </header> 
+        <div class="container">
+            <div class="task">
+                <h2>Перевірка номеру Life</h2>
+                <input type="text" id="phone-number" placeholder="Введіть номер телефону">
+                <button onclick="testCellPhoneNumber()">Перевірити</button>
+                <p id="result"></p>
+            </div>
+
+            <div class="task">
+                <h2>Перевірка номера стаціонарного телефону у м. Львів</h2>
+                <input type="text" id="phone-number1" placeholder="Введіть номер телефону">
+                <button onclick="testPhoneNumber()">Перевірити</button>
+                <p id="result1"></p>
+            </div>
+
+            <div class="task">
+                <h2>Видалення зайвих пробілів</h2>
+                <input type="text" id="text-input" onblur="this.value=removeRedundantSpaces(this.value);">
+            </div>
+
+            <div class="task">
+                <h2>Видалення HTML-тегів</h2>
+                <textarea id="editor">
+    <html>
+    <i>bochach</i>
+    <b>maksym</b>
+    <br>
+    <br>
+    <br>
+    </html>
+                </textarea>
+                    <button onclick="document.getElementById('editor').value = clearTextFromHTMLTags(document.getElementById('editor').value);">Очистити теги</button>
+            </div>
+
+            <div class="task">
+                <h2>Перевірка натурального числа</h2>
+                <input type="text" id="numberInput" placeholder="Введіть число">
+                <button onclick="checkWholePositiveNumber(document.getElementById('numberInput').value);">Перевірити</button>
+                <p id="result2"></p>
+            </div>
+
+            <div class="task">
+                <h2>Введіть пароль</h2>
+                <input type="password" id="passwordInput" placeholder="Пароль">
+                <button  onclick="changePasswordFieldStyle();">Змінити стиль</button>
+
+            </div>
+
+            <div class="task">
+                <table border="1" cellspacing="0" cellpadding="5" bordercolor="#000000">
+                    <tr id="row1">
+                        <td>  11  </td>
+                        <td>  12  </td>
+                    </tr>
+                    <tr>
+                        <td>  21  </td>
+                        <td>  22  </td>
+                    </tr>
+                    <tr id="row3">
+                        <td>  31  </td>
+                        <td>  32  </td>
+                    </tr>
+                </table>
+                <button onclick="hideRows();">Приховати рядки</button>
+            </div>
+
+            <div class="task">
+                <form>
+                    <input type="password" id="password1" placeholder="Введіть пароль" oninput="checkForm()">
+                    <input type="password" id="password2" placeholder="Повторіть пароль" oninput="checkForm()">
+                    <input type="text" id="textField" placeholder="Текстове поле" oninput="checkForm()">
+                    <select id="dropdown" onchange="checkForm()" style="display:block;">
+                        <option value="0">Виберіть опцію</option>
+                        <option value="1">Опція 1</option>
+                        <option value="2">Опція 2</option>
+                        <option value="3">Опція 3</option>
+                    </select>
+                    <button id="submitButton" disabled>Підтвердити</button>
+                </form>
+            </div>
+
+            <div class="task">
+                <h2>Перевірка мобільного номера в межах українських операторів</h2>
+                <input type="text" id="phoneNumberInput1" placeholder="Введіть мобільний номер">
+                <button onclick="checkPhoneNumber()">Перевірити</button>
+                <p id="result3"></p>
+            </div>
+
+            <div class="task">
+                <h2>Перевірка поштового індексу м. Львів</h2>
+                <input type="text" id="postcodeInput" placeholder="Введіть поштовий індекс">
+                <button onclick="checkPostcode()">Перевірити</button>
+                <p id="result4"></p>              
+            </div>
+
+            <div class="task">
+                <h2>Перевірка львівського міського номеру</h2>
+                <input type="text" id="phoneNumberInput" placeholder="Введіть телефонний номер">
+                <button onclick="checkPhoneNumberLviv()">Перевірити</button>
+                <p id="result5"></p>
+            </div>
+
+            <div class="task">
+                <h2>Видалення HTML-коментарів</h2>
+                <textarea id="editor2">
+    <!-- коментар -->
+    <html>
+    <!-- коментар -->
+    <i>bochach</i>
+    <b>maksym</b>
+    <!-- коментар -->
+    <br>
+    <br>
+    <br>
+    </html>
+    <!-- коментар -->
+                </textarea>
+                <button onclick="clearHTMLComments()">Очистити коментарі</button>
+            </div>
+
+
+            <div class="task">
+                <h2>Видалення тегів</h2>
+                <textarea id="editor3">
+    <p>Це абзац</p>
+    <font color="red">Цей текст написаний червоним кольором</font>
+    Текст без тегів
+    <br>
+    <hr>
+    Інший текст без тегів
+                </textarea>
+                <button onclick="clearTags()">Очистити теги</button>
+            </div>
+
+            <div class="task">
+                <h2>Видалення пробілів на початку та в кінці</h2>
+                <textarea id="editor4" placeholder="Введіть текст з пробілами на початку та в кінці"></textarea>
+                <button onclick="trimText()">Видалити пробіли</button>
+            </div>
+
+
+            <div class="task">
+                <h2>Перевірка року</h2>
+                <input type="text" id="yearInput" placeholder="Рік (1900-2099)">
+                <button onclick="checkYear()">Перевірити</button>   
+                <p id="yearresult"></p>         
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
